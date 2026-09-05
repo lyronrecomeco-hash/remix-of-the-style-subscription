@@ -8,7 +8,7 @@ import { plans } from "@/lib/drop-data";
 import aboutImage from "@/assets/drop-about.jpg";
 
 export const Route = createFileRoute("/assinar")({
-  validateSearch: (search: Record<string, unknown>) => ({ plano: typeof search.plano === "string" ? search.plano : "corte" }),
+  validateSearch: (search: Record<string, unknown>) => ({ plano: typeof search["plano"] === "string" ? search["plano"] : "corte" }),
   head: () => ({ meta: [
     { title: "Assinar Clube DROP | DROP Barbearia" }, { name: "description", content: "Escolha seu plano mensal de corte e barba na DROP Barbearia." },
     { property: "og:title", content: "Clube DROP | Estilo em dia todo mês" }, { property: "og:description", content: "Planos de corte e barba a partir de R$ 35 por mês." },
@@ -18,9 +18,10 @@ export const Route = createFileRoute("/assinar")({
 
 function SubscribePage(){
   const {plano}=Route.useSearch(); const [step,setStep]=useState(0); const [plan,setPlan]=useState(plans.some(p=>p.id===plano)?plano:"corte"); const [payment,setPayment]=useState<"pix"|"card"|"">(""); const [avatar,setAvatar]=useState(0); const [form,setForm]=useState({nome:"",sobrenome:"",cpf:"",cep:"",rua:"",numero:"",complemento:"",cidade:"Cachoeiro de Itapemirim",bairro:"",estado:"ES",senha:"",telefone:""});
-  const selectedPlan=plans.find(p=>p.id===plan)??plans[0]; const validForm=Object.entries(form).filter(([k])=>!['complemento'].includes(k)).every(([,v])=>v.trim().length>1);
+  const selectedPlan=plans.find(p=>p.id===plan); const validForm=Object.entries(form).filter(([k])=>!['complemento'].includes(k)).every(([,v])=>v.trim().length>1);
   const next=()=>setStep(s=>Math.min(7,s+1)); const back=()=>setStep(s=>Math.max(0,s-1));
   const fields: [keyof typeof form,string,string][]=[["nome","Nome","text"],["sobrenome","Sobrenome","text"],["cpf","CPF","text"],["telefone","WhatsApp","tel"],["cep","CEP","text"],["rua","Rua","text"],["numero","Número","text"],["complemento","Complemento (opcional)","text"],["bairro","Bairro","text"],["cidade","Cidade","text"],["estado","Estado","text"]];
+  if (!selectedPlan) return null;
   return <div className="min-h-screen"><DropHeader/><main className="mx-auto max-w-6xl px-4 pb-16 pt-24 sm:px-6 lg:pt-28"><div className="mb-6 flex justify-between"><Link to="/" className="flex items-center gap-2 text-xs font-bold uppercase text-muted-foreground"><ArrowLeft className="h-4 w-4"/> Voltar ao site</Link>{step<7&&<span className="text-xs font-bold uppercase text-muted-foreground">Etapa {step+1} de 7</span>}</div><div className="mb-6 grid grid-cols-7 gap-1.5">{[0,1,2,3,4,5,6].map(i=><div key={i} className={`h-1 ${i<=step?'bg-primary':'bg-muted'}`}/>)}</div><section className="glass min-h-[680px] overflow-hidden border border-line">
     {step===0&&<div className="grid min-h-[680px] md:grid-cols-[.9fr_1.1fr]"><img src={aboutImage} alt="Clube DROP" width="1024" height="1280" className="h-80 w-full object-cover md:h-full"/><div className="flex flex-col justify-center p-7 sm:p-12"><p className="eyebrow">Clube DROP</p><h1 className="mt-5 font-display text-4xl uppercase leading-none sm:text-6xl">Seu estilo não tira folga.</h1><p className="mt-6 max-w-lg text-muted-foreground">Faça parte do clube e mantenha corte e barba sempre em dia, com economia e prioridade.</p><Button onClick={next} size="lg" className="mt-9 w-fit">Escolher meu plano <ArrowRight/></Button></div></div>}
     {step===1&&<Flow title="Escolha seu ritmo." eyebrow="Planos Clube DROP"><div className="grid gap-3 md:grid-cols-2">{plans.map(p=><button key={p.id} onClick={()=>setPlan(p.id)} className={`choice-card ${plan===p.id?'choice-card-active':''}`}><div className="grid grid-cols-[minmax(0,1fr)_auto] gap-4"><div><p className="font-bold uppercase">{p.name}</p><p className="mt-1 text-xs text-muted-foreground">{p.label}</p></div><p className="font-display text-xl text-primary">R$ {p.price}</p></div><ul className="mt-4 space-y-1 text-xs text-muted-foreground">{p.services.slice(0,3).map(s=><li key={s}>• {s}</li>)}</ul></button>)}</div></Flow>}

@@ -23,7 +23,7 @@ const times = ["09:00", "10:30", "11:30", "14:00", "15:30", "17:00", "18:30"];
 
 function BookingPage() {
   const [step,setStep]=useState(0); const [pro,setPro]=useState(""); const [selected,setSelected]=useState<string[]>([]); const [date,setDate]=useState(""); const [time,setTime]=useState("");
-  const services=pro?servicesByProfessional[pro]:[];
+  const services=pro?(servicesByProfessional[pro] ?? []):[];
   const total=useMemo(()=>services.filter(s=>selected.includes(s.name)).reduce((a,s)=>a+s.price,0),[services,selected]);
   const canNext=step===0 || (step===1&&!!pro) || (step===2&&selected.length>0) || (step===3&&!!date&&!!time) || step===4;
   const next=()=>{if(canNext)setStep(s=>Math.min(5,s+1))}; const back=()=>setStep(s=>Math.max(0,s-1));
