@@ -125,7 +125,7 @@
 
 .plans-list { border-top: 2px solid var(--foreground); }
 .plan-row { min-height: 15rem; padding: 2rem 0; display: grid; grid-template-columns: 1.1fr 1fr .6fr; gap: 3rem; align-items: center; border-bottom: 1px solid var(--line); }
-.plan-row-featured { background: var(--foreground); color: var(--background); margin-inline: -1.5rem; padding-inline: 1.5rem; }
+.plan-row-featured { background: var(--foreground); color: var(--background); padding-inline: 1.5rem; }
 .plan-name > span { font-size: .62rem; font-weight: 800; text-transform: uppercase; color: var(--muted-foreground); }
 .plan-name h3 { margin-top: .75rem; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); line-height: .9; text-transform: uppercase; }
 .plan-name p { margin-top: .75rem; color: var(--muted-foreground); }
