@@ -34,16 +34,16 @@ function HomePage() {
       <section className="relative px-3 pb-10 pt-24 sm:px-5 lg:pb-14 lg:pt-28">
         <div className="ambient-glow ambient-glow-top" />
         <div className="hero-shell relative mx-auto grid max-w-7xl overflow-hidden lg:grid-cols-[.88fr_1.12fr]">
-          <div className="relative min-h-[360px] overflow-hidden lg:min-h-[630px]">
+          <div className="relative min-h-[270px] overflow-hidden sm:min-h-[360px] lg:min-h-[630px]">
             <img src={heroImage} alt="Barbeiro realizando corte degradê na DROP" width="1024" height="1280" className="absolute inset-0 h-full w-full object-cover" />
             <div className="image-shade absolute inset-0" />
             <div className="absolute bottom-5 left-5 flex items-center gap-3 text-xs font-bold uppercase sm:bottom-7 sm:left-7"><span className="status-dot"/> Agenda aberta</div>
           </div>
-          <div className="relative z-10 flex min-h-[500px] flex-col justify-between border-t border-line p-7 sm:p-10 lg:min-h-[630px] lg:border-l lg:border-t-0 lg:p-14">
+          <div className="relative z-10 flex flex-col justify-between border-t border-line p-7 sm:min-h-[460px] sm:p-10 lg:min-h-[630px] lg:border-l lg:border-t-0 lg:p-14">
             <div>
               <div className="eyebrow-line"><span /> Cachoeiro de Itapemirim · ES</div>
               <p className="mt-10 text-xs font-bold uppercase text-muted-foreground">Corte · barba · assinatura</p>
-              <h1 className="mt-3 font-display text-[clamp(4.5rem,8vw,7.75rem)] leading-[.82] uppercase">Presença<br/><span className="text-primary">sem esforço.</span></h1>
+              <h1 className="mt-3 font-display text-[clamp(3.8rem,8vw,7.75rem)] leading-[.82] uppercase">Presença<br/><span className="text-primary">sem esforço.</span></h1>
               <p className="mt-7 max-w-lg text-base leading-relaxed text-muted-foreground">Técnica precisa, ambiente próprio e um jeito mais simples de manter seu estilo sempre em dia.</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button asChild size="lg"><Link to="/agendar"><CalendarDays /> Agendar horário</Link></Button><Button asChild variant="outline" size="lg"><Link to="/assinar" search={{ plano: "corte" }}>Conhecer o Clube <ArrowUpRight /></Link></Button></div>
             </div>
