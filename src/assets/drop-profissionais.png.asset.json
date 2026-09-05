@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "ff5d56b3-e3ae-4f32-b9e7-609507b990df",
-  "project_id": "8b9fe39b-6c7f-48b1-a7b8-401173a40c0a",
-  "url": "/__l5e/assets-v1/ff5d56b3-e3ae-4f32-b9e7-609507b990df/drop-profissionais.png",
-  "r2_key": "a/v1/8b9fe39b-6c7f-48b1-a7b8-401173a40c0a/ff5d56b3-e3ae-4f32-b9e7-609507b990df/drop-profissionais.png",
-  "original_filename": "drop-profissionais.png",
-  "size": 51514,
   "content_type": "image/png",
-  "created_at": "2026-09-05T11:25:11Z"
+  "created_at": "2026-09-05T11:25:11Z",
+  "original_filename": "drop-profissionais.png",
+  "project_id": "4e652da2-b9c8-4676-a21a-c23858647aca",
+  "r2_key": "a/v1/4e652da2-b9c8-4676-a21a-c23858647aca/ff5d56b3-e3ae-4f32-b9e7-609507b990df/drop-profissionais.png",
+  "size": 51514,
+  "url": "/__l5e/assets-v1/ff5d56b3-e3ae-4f32-b9e7-609507b990df/drop-profissionais.png",
+  "version": 1
 }
