@@ -7,12 +7,17 @@ import type { Plan } from "@/lib/drop-data";
 export function PlanCard({ plan }: { plan: Plan }) {
   return (
     <article className={`plan-card ${plan.featured ? "plan-card-featured" : ""}`}>
-      {plan.featured && <span className="plan-kicker">Mais escolhido</span>}
-      <p className="eyebrow">Assinatura mensal</p>
-      <h3 className="mt-4 text-2xl font-bold uppercase">{plan.name}</h3>
-      <p className="mt-2 min-h-10 text-sm text-muted-foreground">{plan.label}</p>
-      <div className="my-7 flex items-end gap-2"><span className="pb-1 text-sm">R$</span><strong className="font-display text-5xl">{plan.price}</strong><span className="pb-1 text-sm text-muted-foreground">/mês</span></div>
-      <div className="flex flex-col gap-3">
+      <div>
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
+          <p className="eyebrow">Assinatura mensal</p>
+          {plan.featured && <span className="plan-kicker">Mais escolhido</span>}
+        </div>
+        <h3 className="mt-5 font-display text-3xl uppercase">{plan.name}</h3>
+        <p className="mt-1 text-sm text-muted-foreground">{plan.label}</p>
+        <div className="my-6 flex items-end gap-2"><span className="pb-1 text-xs">R$</span><strong className="font-display text-5xl leading-none">{plan.price}</strong><span className="pb-1 text-xs text-muted-foreground">/mês</span></div>
+        <ul className="mb-7 space-y-2.5">{plan.services.slice(0,3).map((item)=><li key={item} className="flex items-start gap-2 text-xs text-muted-foreground"><Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary"/><span>{item}</span></li>)}</ul>
+      </div>
+      <div className="flex flex-col gap-2.5">
         <Button asChild size="lg"><Link to="/assinar" search={{ plano: plan.id }}>Assinar plano <ArrowRight /></Link></Button>
         <Dialog>
           <DialogTrigger asChild><Button variant="outline" size="lg">Ver todas as vantagens</Button></DialogTrigger>
